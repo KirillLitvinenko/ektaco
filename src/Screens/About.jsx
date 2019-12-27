@@ -26,12 +26,13 @@ const About = ({ classes }) => (
         <Link href='tel:kirill.litvinenko' className={classes.externalLink} variant="body1">kirill.litvinenko</Link>
       </div>
     </div>
-    <Typography variant="body1" className={classes.mb10}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam asperiores beatae
-      eaque, in minus molestias, perspiciatis praesentium quasi recusandae similique sint sunt totam! Cupiditate
-      inventore ipsam qui reprehenderit unde. Suscipit.</Typography>
-    <Typography variant="body1" className={classes.mb10}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam asperiores beatae
-      eaque, in minus molestias, perspiciatis praesentium quasi recusandae similique sint sunt totam! Cupiditate
-      inventore ipsam qui reprehenderit unde. Suscipit.</Typography>
+    <Typography variant="body1" className={classes.mb10}>I have been working in IT for 7 years, I started as a frontend
+      developer and still doing staff on a fronted side but during the last two years I’m also working as a Scrum
+      Master. Last year I passed certification so now I’m CSM with pretty big tech background.
+      More detailed info in the attached CV but if we are talking about projects which I was taken part in, they are
+      were really different — e-commerce, learning platforms, betting and a lot of others. Those projects were also
+      different from team composition purpose — form me doing all work alone to pretty much big teams. Now as an SM I
+      helping our team which is 15 people in total.</Typography>
   </div>
 );
 

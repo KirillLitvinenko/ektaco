@@ -13,6 +13,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { useMediaPredicate } from 'react-media-hook';
 
 import { commonStyles } from '../../styles/styles';
@@ -58,28 +59,31 @@ const JokesView = ({
         >
           {`Get a random joke ${mainState.selectedCategory && `about ${mainState.selectedCategory}`}`}
         </Button>
-        {mainState.jokeFetched &&
         <div className={classes.jokeBox}>
-          <Typography variant='body1' className={classes.joke}>{mainState.randomJokeResponse.value}</Typography>
-          {!mainState.savedJokes.some(joke => joke.id === mainState.randomJokeResponse.id) && (
-            <div className={classes.jokesBoxFooter}>
-              <Fab
-                aria-label='like'
-                color='primary'
-                size='small'
-                onClick={() => handleSaveJoke(mainState.randomJokeResponse.id, mainState.randomJokeResponse.value)}>
-                <FavoriteIcon />
-              </Fab>
+          {mainState.jokeFetched ? (
+            <div className={classes.jokeBoxInner}>
+              <Typography variant='body1' className={classes.joke}>{mainState.randomJokeResponse.value}</Typography>
+              {!mainState.savedJokes.some(joke => joke.id === mainState.randomJokeResponse.id) && (
+                <div className={classes.jokesBoxFooter}>
+                  <Fab
+                    aria-label='like'
+                    color='primary'
+                    size='small'
+                    onClick={() => handleSaveJoke(mainState.randomJokeResponse.id, mainState.randomJokeResponse.value)}>
+                    <FavoriteIcon />
+                  </Fab>
+                </div>
+              )}
             </div>
+          ) : (
+            mainState.jokeFetching && <CircularProgress />
           )}
         </div>
-        }
       </div>
       <div className={`${classes.secondaryColumn} ${mobileSze && classes.fullWidthColumn}`}>
         <Typography variant='h6' className={classes.columnTitle}>Saved jokes</Typography>
-        {mainState.savedJokes.length > 0 &&
-        <div>
-          {mainState.savedJokes.map(
+        {mainState.savedJokes.length > 0 && (
+          mainState.savedJokes.map(
             joke => (
               <div className={`${classes.jokeBox} ${classes.jokeBoxSaved}`} key={joke.id}>
                 <Typography variant='body1' className={classes.joke}>{joke.value}</Typography>
@@ -103,9 +107,8 @@ const JokesView = ({
                 </div>
               </div>
             )
-          )}
-        </div>
-        }
+          )
+        )}
       </div>
       <Dialog
         open={mainState.openEditPopup}

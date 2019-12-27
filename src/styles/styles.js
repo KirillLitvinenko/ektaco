@@ -105,14 +105,26 @@ export const commonStyles = {
     textAlign: 'center',
   },
   jokeBox: {
+    display: 'flex',
+    flexDirection: 'column',
     marginTop: 20,
     padding: 10,
     backgroundColor: COLORS.lightGrey,
-    maxWidth: '80%',
+    width: '80%',
+    minHeight: 300,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   jokeBoxSaved: {
-    maxWidth: '100%',
+    width: 'auto',
     marginBottom: 8,
+    minHeight: 0,
+  },
+  jokeBoxInner: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   jokesBoxFooter: {
     marginTop: 8,
@@ -124,6 +136,7 @@ export const commonStyles = {
   },
   joke: {
     fontStyle: 'italic',
+    flex: 1,
   },
   categoriesSet: {
     flexDirection: 'row',
